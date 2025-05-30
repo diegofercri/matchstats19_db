@@ -13,13 +13,13 @@
 
 ---
 
-### 1. 'extended_user'
+### 1. 'profile'
 * 'id' (uuid, PK)
 * 'name' (string, not null)
 * 'surname' (string, not null)
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -28,20 +28,20 @@
 * 'type' (rol_enum, not null)
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
 ### 15. 'rol_assignment'
 * 'id' (uuid, PK)
 * 'rol_id' (string, not null, FK → 'rol.id')
-* 'extended_user_id' (string, not null, FK → 'extended_user.id')
+* 'user_id' (string, not null, FK → 'user.id')
 * 'entity_id' (string, not null)
 * 'entity_type' (entity_type_enum, not null)
-*  unique ('rol_id', 'extended_user_id', 'entity_id')
+*  unique ('rol_id', 'user_id', 'entity_id')
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -53,7 +53,7 @@
 * 'image_url' (string)
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -66,7 +66,7 @@
 * 'competition_id' (string, not null, FK → 'competition.id')
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -79,7 +79,7 @@
 * 'season_id' (string, not null, FK → 'season.id')
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -90,7 +90,7 @@
 * 'phase_id' (string, not null, FK → 'phase.id')
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -101,7 +101,7 @@
 * 'image_url' (string)
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -114,7 +114,7 @@
 * 'born_date' (date, not null)
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -130,7 +130,7 @@
 * 'group_id' (string, FK → 'group.id')
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -144,7 +144,7 @@
 * 'winner_id' (string, not null, FK → 'team_season.id')
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -166,7 +166,7 @@
 *  unique ('season_id', 'phase_id', 'group_id', 'team_season_id')
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -177,7 +177,7 @@
 *  unique ('team_id', 'season_id')
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -189,7 +189,7 @@
 *  unique ('player_id', 'team_season_id')
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -200,7 +200,7 @@
 *  unique ('group_id', 'team_season_id')
 * 'created_at' (timestamp, not null)
 * 'updated_at' (timestamp, not null)
-* 'updated_by_user_id' (string, FK → 'extended_user.id')
+* 'updated_by_user_id' (string, FK → 'user.id')
 
 ---
 
@@ -213,10 +213,10 @@
 
 ---
 
-1.  **'extended_user.updated_by_user_id' → 'extended_user.id'**
+1.  **'user.updated_by_user_id' → 'user.id'**
     * Tipo: 1:N (Autorreferencia para auditoría)
-2.  **'[tabla].updated_by_user_id' → 'extended_user.id'** (Común a la mayoría de las tablas)
-    * Tipo: 1:N (Auditoría: un extended_user actualiza muchos registros)
+2.  **'[tabla].updated_by_user_id' → 'user.id'** (Común a la mayoría de las tablas)
+    * Tipo: 1:N (Auditoría: un user actualiza muchos registros)
 3.  **'season.competition_id' → 'competition.id'**
     * Tipo: 1:N (Una competición tiene N seasons)
 4.  **'team_season' (Tabla de Cruce para 'team' y 'season')*
@@ -257,7 +257,7 @@
     * Tipo: 1:N (Opcional: un group tiene N entradas de clasificación)
 19. **'standing.team_season_id' → 'team_season.id'**
     * Tipo: 1:N (Un team_season tiene N entradas de clasificación)
-20. **'asignacionRolUsuario' (Tabla de Cruce para 'extended_user' y 'rol' contextualizada por entidad)*
-    * 'asignacionRolUsuario.extended_user_id' → 'extended_user.id'
+20. **'asignacionRolUsuario' (Tabla de Cruce para 'user' y 'rol' contextualizada por entidad)*
+    * 'asignacionRolUsuario.user_id' → 'user.id'
     * 'asignacionRolUsuario.rol_id' → 'rol.id'
-    * Tipo: M:N entre 'extended_user' y 'rol' (para una 'entity_type' y 'entity_id' específicas)
+    * Tipo: M:N entre 'user' y 'rol' (para una 'entity_type' y 'entity_id' específicas)
